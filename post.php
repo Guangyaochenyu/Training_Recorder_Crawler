@@ -1,0 +1,1 @@
+<?php file_get_contents($_POST['url'],false,stream_context_create(array('http'=>array('method'=>'POST','header'=>'Content-type:application/x-www-form-urlencoded','content'=>http_build_query(array('text'=>$_POST['text'])))))); ?>

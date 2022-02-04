@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF8" />
+  <meta name="author" content="Guangyaochenyu" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://cloud.tencent.com/favicon.ico?t=201902181234" />
+  <!-- <link rel="icon" href="http://hrbuacm.top/../../favicon.ico"> -->
+  <title>哈尔滨学院2022寒假训练签到表</title>
+  <meta Name="keywords" Content="" />
+  <meta Name="description" Content="" />
+  <meta name="viewport" content="width=device-width,initial-scale=0.7">
+  <link rel="stylesheet" href="./source/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./source/css/bootstrap-theme.min.css" />
+  <script src="./source/js/jquery.min.js"></script>
+  <script src="./source/js/bootstrap.min.js"></script>
+  <script src="./source/js/dayjs.min.js"></script>
+  <script src="./source/js/acm.js"></script>
+  <style>
+    body{margin: 0;padding: 0;}
+    body::-webkit-scrollbar { width: 0 !important }
+    input{border:0;width:150px;}
+    input.name{width:420px;}
+    .sticky{position: -webkit-sticky;position: sticky;}
+  </style>
+</head>
+<body onload='init()'>
+  <div class="container sticky"><br />
+    <ul class="breadcrumb" id="pageList">
+      <li><strong onclick="submit()">哈尔滨学院2022寒假训练签到表</strong></li>
+      <li class="text-danger" onclick="pageChange(1)">日常训练</li>
+      <li class="text-info" onclick="pageChange(2)">日常竞赛</li>
+      <li class="text-info" onclick="pageChange(3)">训练列表</li>
+      <li class="text-info" onclick="pageChange(4)">账号列表</li>
+      <li class="text-info" onclick="pageChange(5)">说明文档</li>
+      <li class="pull-right text-muted" id="pageView"></li>
+    </ul>
+  </div>
+  <div class="container" id="page1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm table-bordered" id="table1">
+            <thead id="thead1"></thead><tbody id="tbody1"></tbody></table>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="container hidden" id="page2">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm table-bordered" id="table2">
+            <thead id="thead2"></thead><tbody id="tbody2"></tbody></table>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="container hidden" id="page3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm table-bordered" id="table3">
+            <thead id="thead3">
+              <tr>
+                <th onclick="document.getElementById('tbody3').innerHTML+=newLine(4);">训练缩写</th>
+                <th>平台</th>
+                <th>名称</th>
+                <th>状态</th>
+              </tr>
+            </thead><tbody id="tbody3"></tbody></table>
+            <span class="pull-right text-muted" id="timestampContestList"></span>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="container hidden" id="page4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm table-bordered" id="table4">
+            <thead id="thead4">
+              <tr>
+                <th onclick="document.getElementById('tbody4').innerHTML+=newLine(5);">姓名</th>
+                <th>Vjudge</th>
+                <th>Codeforces</th>
+                <th>Atcoder</th>
+                <th>AcWing</th>
+              </tr>
+            </thead>
+            <tbody id="tbody4"></tbody></table>
+            <span class="pull-right text-muted" id="timestampUserList"></span>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="container hidden" id="page5">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="panel panel-default">
+          <div class="panel-body"><h3><strong>Ver 2.0 </strong><span class="badge">Latest</span></h3><hr />
+            <h4>
+              <ul>
+                <li><p>实现了前端在线爬取比赛数据</p></li>
+                <li><p>优化了页面显示和存储数据结构</p></li>
+              </ul>
+            </h4>
+            <hr />
+            <h4><strong>Contributors</strong></h4>
+            <div><img class="img-circle" src="https://avatars.githubusercontent.com/u/69202629?s=40&v=4">&nbsp;&nbsp;<span class="text-muted">Guangyaochenyu</span></div>
+            <hr />
+            <h4><strong data-toggle="collapse" data-parent="#accordion" href="#Version20">Assets</strong></h4>
+            <div id="Version20" class="panel-collapse collapse in">
+              <br />
+              <div class="panel panel-default">
+                <div class="panel-body"><a href="./recorder_2.0.zip">💼 recorder_2.0.zip</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body"><h3><strong>Ver 1.4 </strong></h3><hr />
+            <h4><strong>Contributors</strong></h4>
+            <div><img class="img-circle" src="https://avatars.githubusercontent.com/u/69202629?s=40&v=4">&nbsp;&nbsp;<span class="text-muted">Guangyaochenyu</span></div><hr />
+            <h4><strong data-toggle="collapse" data-parent="#accordion" href="#Version14">Assets</strong></h4>
+            <div id="Version14" class="panel-collapse collapse in">
+              <br />
+              <div class="panel panel-default">
+                <div class="panel-body"><a href="./recorder_1.4.html">🌐 recorder_1.4.html</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./source/js/acm.js"></script>
+  <script>
+    var fresh=()=>{document.getElementById("pageView").innerHTML="访问量:"+obj.PageView;document.getElementById("timestampUserList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.UserList).format('YYYY/MM/DD HH:mm:ss');document.getElementById("timestampContestList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.ContestList).format('YYYY/MM/DD HH:mm:ss');document.getElementById("tbody1").innerHTML=DailyTrain();document.getElementById("tbody2").innerHTML=DailyContest();document.getElementById("tbody3").innerHTML=ContestList();document.getElementById("tbody4").innerHTML=UserList();}
+    var init=()=>{obj=download();obj.PageView+=1;obj.TimeStamp.LastVisit=Math.round(new Date());update(obj);fresh();}
+  </script>
+</body>
+</html>
