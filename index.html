@@ -147,7 +147,16 @@
   </div>
   <script src="./source/js/acm.js"></script>
   <script>
-    var fresh=()=>{document.getElementById("pageView").innerHTML="访问量:"+obj.PageView;document.getElementById("timestampUserList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.UserList).format('YYYY/MM/DD HH:mm:ss');document.getElementById("timestampContestList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.ContestList).format('YYYY/MM/DD HH:mm:ss');document.getElementById("tbody1").innerHTML=DailyTrain();document.getElementById("tbody2").innerHTML=DailyContest();document.getElementById("tbody3").innerHTML=ContestList();document.getElementById("tbody4").innerHTML=UserList();}
+    var fresh=()=>{
+      document.getElementById("pageView").innerHTML="访问量:"+obj.PageView;
+      document.getElementById("timestampUserList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.UserList).format('YYYY/MM/DD HH:mm:ss');
+      document.getElementById("timestampContestList").innerHTML="最后更新时间: "+dayjs(obj.TimeStamp.ContestList).format('YYYY/MM/DD HH:mm:ss');
+      document.getElementById("tbody1").innerHTML=DailyTrain();
+      document.getElementById("tbody2").innerHTML=DailyContest();
+      document.getElementById("tbody3").innerHTML=ContestList();
+      document.getElementById("tbody4").innerHTML=UserList();
+      document.body.children[1].innerHTML=(document.body.children[1].innerHTML).replaceAll("undefined","");
+    }
     var init=()=>{obj=download();obj.PageView+=1;obj.TimeStamp.LastVisit=Math.round(new Date());update(obj);fresh();}
   </script>
 </body>
