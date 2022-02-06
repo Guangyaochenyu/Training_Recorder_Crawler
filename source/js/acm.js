@@ -1,4 +1,4 @@
-var __author__ = "Guangyaochenyu"
+var __author__ = "Guangyaochenyu";
 var __version__ = "2.0";
 var __database__ = "HRBUACM";
 var __status__ = false;
@@ -29,16 +29,12 @@ var data = (json) => {
   a.send("json=" + json);
   return a.responseText;
 };
-var escape2Html = (str) => {
-  var arrEntities = { lt: "<", gt: ">", nbsp: " ", amp: "&", quot: '"' };
-  return str.replace(/&(lt|gt|nbsp|amp|quot);/gi, function (all, t) {
-    return arrEntities[t];
-  });
-};
-var deal = (url) => {
-  var a = cors(url);
-  return a.substring(a.indexOf("textarea") + 22, a.lastIndexOf("textarea") - 2);
-};
+var escape2Html = (str) =>
+  str.replace(
+    /&(lt|gt|nbsp|amp|quot);/gi,
+    (all, t) => ({ lt: "<", gt: ">", nbsp: " ", amp: "&", quot: '"' }[t])
+  );
+var deal = (url) => cors(url).match(/\{.*\}/)[0];
 var nurl = (str) => "https://notes.orga.cat/" + str;
 var resp = (str) => JSON.parse(escape2Html(str));
 var download = () => resp(deal(nurl(__database__)));
