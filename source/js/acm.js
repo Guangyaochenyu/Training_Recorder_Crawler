@@ -34,7 +34,10 @@ var escape2Html = (str) =>
     /&(lt|gt|nbsp|amp|quot);/gi,
     (all, t) => ({ lt: "<", gt: ">", nbsp: " ", amp: "&", quot: '"' }[t])
   );
-var deal = (url) => cors(url).match(/\{.*\}/)[0];
+var deal = (url) => {
+  var a = cors(url);
+  return a.substring(a.indexOf("textarea") + 22, a.lastIndexOf("textarea") - 2);
+};
 var nurl = (str) => "https://notes.orga.cat/" + str;
 var resp = (str) => JSON.parse(escape2Html(str));
 var download = () => resp(deal(nurl(__database__)));
@@ -337,15 +340,10 @@ var getAtcoder = (Contest) => {
           "&page=" +
           page;
         tmp = getAtcoder2(cors(url));
-        for (var j in tmp) ret[dict[i]][j] = 1;
+        ret[dict[i]]='';
+        for (var j in tmp)ret[dict[i]] += __alphabet__[j];
       }
     }
-  }
-  for (var i in ret) {
-    tmp = "";
-    for (var j = 0; j < __alphabet__.length; j++)
-      if (ret[i][j] == 1) tmp += __alphabet__[j];
-    ret[i] = tmp;
   }
   return ret;
 };
